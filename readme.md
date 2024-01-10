@@ -1,107 +1,67 @@
-#### django_class 폴더 생성
+#### Music + : 음악 시장의 혁신을 불러오다. 
+###### 웹프로젝트 제작 : 음악에 관심 있는 사람들을 위한 웹페이지 제작
+# Index
+## 0. Background : 주제 선정에 영향을 준 컨텐츠
+## 1. What is Music+? : Music+란 무엇인가?
+## 2. Music+ : 우리 조가 만들어낸 웹 페이지
+## 3. Contents : 웹 페이지 구성 요소
 
-#### 가상환경 생성
--윈도 : python -m venv myenv
--리눅스 : python3 -m venv myenv
+### 0. Background
+- 1) 예술적인 창조력의 가능성을 발견
+- 2) 새로운 기술의 음악성을 발견
+- 3) 예술과 기술의 융합이 어떻게 세상을 변화시킬 수 있는가
+- 4) 디지털 시대의 예술은 어떤 미래를 맞이할 것인가
 
-#### 가상환경 활성화
--윈도 : myenv\Scripts\activate
--리눅스 : source myenv/bin/activate
+### 1. What is Music+?
+- What is Music+? : Music+란 무엇일까?
+- 1) Music+만의 로고 제작 : 음악에 추가하는 우리들의 창의성
+- 2) 음악에 혁신을 더하다 : Music+가 가져올 수 있는 새로운 음악 웹페이지
+- 3) 메인 컬러 : 흰색(백색 건반처럼 모든 음악의 기본 색) / 검은색(음악의 깊은 감정을 표현) / 빨간색(음악의 열정적이고 넘치는 에너지)
 
-#### requirements 설치
-pip install -r requirements.txt
 
-#### 새 프로젝트 (mysite라는 프로젝트 폴더 생성)
-django-admin startproject mysite .
+### 2. Music+
+- 1) 실시간 차트 : 국내 음원회사의 차트를 크롤링을 통해 연결
+-- 우리의 웹페이지는 국내 음원회사의 차트를 크롤링을 통해 연결하여 제공합니다. 동적이고 풍부한 차트를 제공함으로써 사용자들에게 정보를 제공하여 음악 시장의 흐름을 분석할 수 있는 기회를 제공할 것입니다.
 
-#### DB 생성
-python manage.py migrate
->> db.sqlite3 생성됨.
+- 2) 내 음악리스트 만들기 : 나만의 음악을 추가하는 플레이리스트
+-- 자신의 열정과 주관으로 사용자들은 음악 경험을 만들어갑니다. 직접 선정한 음악들은 각 사용자의 취향과 일상에 더욱 가깝게 다가가며 자신만의 음악 세계를 만들어 갈 것입니다.
 
-#### 관리자 계정
-python manage.py createsuperuser
-아이디/비번: admin/admin 
+- 3) 추천 음악 게시판 : 우리의 음악 커뮤니티
+-- 사용자들이 소통하고 공유하는 공간인 추천음악 게시판은 우리의 웹페이지를 통해 형성된 음악 커뮤니티입니다. 각자가 추천하는 음악을 소개하고 토론할 수 있는 플랫폼으로, 우리가 만든 웹페이지의 가치를 높이고자 합니다.
 
-#### 서버 실행 (서버 중단. 터미널에서 Ctrl+C)
-python manage.py runserver
+- 4) 최신 음악 뉴스 : 직접 수집한 트렌드와 소식
+-- 우리들은 음악 시장의 최신 트렌드와 뉴스를 주시하고 수집하여 제공합니다. 손수 모은 정보를 통해 사용자들에게 음악 흐름을 예측하고 소개함으로써, 우리의 웹페이지는 음악 팬들에게 독특하고 가치 있는 정보를 제공합니다.
 
-#### admin 접속 (장고 제공 관리자 페이지)
-http://127.0.0.1:8000/admin/
-여기서 아이디, 비밀번호 써서 접속
 
-#### 앱 만들기
-python manage.py startapp blog
-python manage.py startapp single_pages
-settings.py에 blog 앱과 single_pages 앱 등록
 
-### URLConf
- "URL Configuration"의 약어로, 웹 애플리케이션의 URL 패턴을 정의하고 관리하는데 사용되는 중요한 구성 요소
+### 3. Content
+- 1) Music+ Home
+-- 웹페이지 홈 화면 : 로그인 및 회원가입 출력
 
-#### 앱 등록 (settings.py)
-INSTALLED_APPS 부분에 앱이름 추가 
+- 2) Footer
+-- 각 content 이동 및 이메일 구독 출력
 
-#### 주소 추가 (urls.py)
-- 선행작업: from django.urls import path, include  (include 추가)
-- 하단 path 추가. (아무것도 없을 경우 싱글페이지의 urls를 참고한다.)
-path('', include("single_pages.urls")),
-- single_pages의 urls파일에서도 반복작업 (파일 참고)
-- 장고에서 templates 폴더는 html파일이 있는 곳으로 인식함
+- 3) Main1
+-- Main페이지 중간에 위치하는 Recent posts
 
-장고(Django) 템플릿 시스템은 Python의 웹 프레임워크인 Django의 핵심 부분 중 하나. 이 시스템은 동적 웹 페이지의 내용을 보다 쉽게 생성할 수 있게 해준다. 
+- 4) Main2
+-- 실시간 멜론 차트의 Top7 출력
 
-1. 템플릿과 컨텍스트
-- 템플릿(Template): HTML 파일에 Python 코드와 비슷한 태그를 포함하여 동적인 웹 페이지를 구성.
-- 컨텍스트(Context): 템플릿에 전달되는 데이터로, 보통 Python 딕셔너리 형태. 템플릿 태그들은 이 데이터를 활용하여 최종 HTML을 생성.
-2. 템플릿 태그
-- 변수 출력: {{ variable }} 형태로 사용되며, 컨텍스트에서 해당 변수의 값을 출력.
-- 제어 구조: {% if %}, {% for %} 등의 태그를 사용하여 조건문과 반복문을 구현할 수 있다.
-- 예: {% if user.is_authenticated %} Hello, {{ user.username }}! {% endif %}
-- 템플릿 상속: {% extends 'base.html' %}를 사용하여 기본 템플릿을 상속받을 수 있다.
-- 블록 태그: {% block content %}{% endblock %}와 같은 형태로, 상속된 템플릿에서 재정의할 수 있는 영역을 지정.
-3. 필터
-- 변수 변형: {{ variable|filter }} 형태로 사용되며, 변수의 출력 형태를 변경.
-- 예: {{ text|lower }}는 text 변수를 소문자로 출력.
+- 5) Realtime Chart
+-- 실시간 차트를 크롤링하여 제공
 
-## Generic view
-- 장고(Django)의 제네릭 뷰(Generic Views)는 일반적인 웹 개발 작업을 위한 미리 정의된 뷰 클래스들을 제공
-- 제네릭 뷰를 사용하면 표준적인 CRUD(Create, Read, Update, Delete) 작업을 처리하는 데 필요한 코드 양을 크게 줄일 수 있다.
+- 6) Maker1 
+-- 웹페이지 소개
 
-#### ListView
-- 목적: 모델의 객체 목록을 표시하기 위한 뷰
-- 특징: 지정된 모델의 모든 레코드(또는 쿼리셋을 통해 필터링된 레코드)를 가져와서 템플릿에 전달
-- Django는 클래스 기반 뷰에 대한 기본 템플릿 이름을 자동으로 생성합니다. 이 이름은 {app_name}/{model_name}_list.html 형식을 따릅니다. 예를 들어, Book 모델을 가진 library 앱에 대한 ListView를 생성한다고 가정하면 library/templates/library/book_list.html
+- 7) Maker2
+-- 웹페이지 개발자 소개
 
-#### DetailView 
-- 목적: 특정 객체의 상세 정보를 표시하기 위한 뷰. 특징: URL에서 전달된 키(보통 기본 키)를 기반으로 특정 모델 인스턴스를 검색하여 템플릿에 전달. 
-- Book 모델에 대한 DetailView를 구현하면 book_detail.html 파일을 생성.
-library/templates/library/book_detail.html
+- 8) Music Recommendations
+-- 추천음악 게시판. 사용자들이 자유롭게 포스트를 작성할 수 있으며 댓글로 소통할 수 있다
 
-## 로그인
+- 9) News
+-- 음악 관련 뉴스 제공
 
-#### 라이브러리 설치 : pip install django-allauth
-#### INSTALLED_APPS 추가
-- "django.contrib.sites", # 사이트 관리
-- "allauth", # allauth 앱
-- "allauth.account", # 계정 관리
-- "allauth.socialaccount", # 소셜 계정 관리
-- "allauth.socialaccount.providers.google", # 구글 로그인
+- 10) 이상형월드컵
+-- 이상형 월드컵이라는 타 사이트에서 제공하는 게임으로 통하는 드롭박스를 제공
 
-#### AUTHENTICATION_BACKENDS 설정
-AUTHENTICATION_BACKENDS = [ 
-"django.contrib.auth.backends.ModelBackend", 
-"allauth.account.auth_backends.AuthenticationBackend", ]
-
-SITE_ID = 1 # 사이트 아이디
-
-- ACCOUNT_EMAIL_REQUIRED = True # 회원가입시 이메일 필수 
-- ACCOUNT_EMAIL_VERIFICATION = "none" # 이메일 인증 필요없음 
-- LOGIN_REDIRECT_URL = "/blog/" # 로그인 후 이동 페이지
-
-#### 구글 개발자 콘솔
-- 새 프로젝트와 클라이언트 만들기 - console.developers.google.com 에 접속
-- 새 프로젝트 생성 > 만들기 > OAuth 동의화면 외부 선택 > 앱이름
-- 사용자 인증 정보 > 사용자 인증 정보 만들기 > OAuth 클라이언트 ID > 만들기 (유형, 이름, URL, URI 입력)
-- 승인된 자바스크립트 원본 : http://127.0.0.1:8000
-- 승인된 리디렉션 URI : http://127.0.0.1:8000/accounts/google/login/callback/
-
-#### navbar {% load socialaccount %}
