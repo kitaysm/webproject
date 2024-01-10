@@ -1,3 +1,4 @@
+![프로젝트 시작](https://github.com/사용자이름/레포지토리/raw/main/images/logo.png)
 # Music + : 음악 시장의 혁신을 불러오다. 
 ##### 웹프로젝트 제작 : 음악에 관심 있는 사람들을 위한 웹페이지 제작
 ## Index
