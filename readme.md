@@ -1,4 +1,4 @@
-![프로젝트 시작](https://github.com/kitaysm/webproject/tree/main/images/1차 프로젝트 메인.png)
+![프로젝트 시작](https://github.com/kitaysm/webproject/tree/main/images/그림1.png)
 # Music + : 음악 시장의 혁신을 불러오다. 
 ##### 웹프로젝트 제작 : 음악에 관심 있는 사람들을 위한 웹페이지 제작
 ## Index
