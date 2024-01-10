@@ -1,0 +1,161 @@
+{% extends "blog/base.html" %}
+{% load static %}
+{% block main_area %}
+{% comment %} 
+<div class="container-fluid mt-0 mb-0 p-0 full-width-image" style="display:flex; align-items: center;">
+    <div class="container text-container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8 text-light">
+                <h3 class="mt-5"></h3>
+                <h2 class="mt-5"></h2>
+                
+            </div>
+        </div>
+    </div>
+</div> {% endcomment %}
+
+
+
+
+
+
+{% if user.is_authenticated %}
+        {% comment %} {% if user.is_superuser or user.is_staff %} {% endcomment %}
+        {% comment %} 로그인한 유저가 슈퍼유저거나 스태프인경우에만 new_post가 뜸. 일반유저도 쓰게할수있게하려면 조건문 그냥 지우면됨 {% endcomment %}
+            <a class="btn  btn-la float-right" href="/blog1/create_post/" role="button">
+                <i class="fas fa-pen"></i>&nbsp;&nbsp;New Post</a>
+        {% comment %} {% endif %} {% endcomment %}
+    {% endif %}
+
+    <style>
+        h1 {
+            color:white;
+        }
+        .card-body {
+            background:black;
+            color:white;
+        }
+        .info {
+            font-size: 18px;
+            margin: 10px;
+        }
+
+        .full-width-image {
+            width: 100%;
+            height: 40vh;
+            {% comment %} background: url('{% static "images/일렉기타2.png" %}') center center no-repeat; {% endcomment %}
+            background-size: cover;
+            {% comment %} opacity: 0.5; {% endcomment %}
+            overflow: hidden;
+        }
+        
+        .text-container {
+            background-color: rgba(0, 0, 0, 0); /* 투명한 배경 */
+        }
+    
+        .text-light {
+            color: white; /* 텍스트 색상을 밝게 */
+        }
+    
+    
+        /* 전체 페이지 스타일 */
+        body {
+            margin: 0;
+            padding: 0;
+            {% comment %} background-color: #f0f0f0; {% endcomment %}
+        }
+
+        .full-background {
+            background: url('{% static "images/건반.png" %}') no-repeat center center fixed;
+            background-size: cover;
+            width: 100%;
+            height: 100%;
+        }
+        .btn {
+            background-color: red;
+            color: white;
+        }
+    </style>
+    
+    <body class="full-background">
+    <h1>Music_Recommendations <br>
+        <div class="info">음악을 사랑하는 모든 이들이 자신의 취향을 자유롭게 표현하고 공유할 수 있는 특별한 공간을 제공합니다.
+             여기서 로그인한 사용자는 누구나 자신의 포스트를 작성할 수 있으며, 다른 사용자들과 적극적으로 소통하고 의견을 나눌 수 있습니다.</div>
+        {% if search_info %}<small class="text-muted">{{ search_info }}</small>{% endif %}
+        {% if category %}<span class="badge badge-secondary">{{ category }}</span>{% endif %}
+        {% if tag %}<span class="badge badge-light"><i class="fas fa-tags"></i>{{ tag }} ({{ tag.post_set.count }})</span>{% endif %}
+    </h1>
+    {% if post_list.exists %}
+
+    {% for p in post_list %}
+        <!-- Blog Post -->
+        <div class="card mb-4" id="post-{{p.pk}}">
+            {% if p.head_image %}
+                <img class="card-img-top" src="{{ p.head_image.url }}" alt="{{ p }} head image">
+            {% else %}
+                <img class="card-img-top" src="https://picsum.photos/seed/{{ p.id }}/800/200" alt="random_image">
+            {% endif %}
+            <div class="card-body">
+                {% if p.category %}
+                    <span class="badge badge-secondary float-right">{{ p.category }}</span>
+                {% else %}
+                    <span class="badge badge-secondary float-right">미분류</span>
+                {% endif %}
+
+                <h2 class="card-title">{{ p.title }}</h2>
+                {% if p.hook_text %}
+                    <h5 class="text-muted">{{ p.hook_text }}</h5>
+                {% endif %}
+                <p class="card-text">{{ p.get_content_markdown | truncatewords:45 | safe }}</p>
+                {% comment %} 45단어까지만 보여줌 {% endcomment %}
+
+                {% comment %} 해시태그만들기 {% endcomment %}
+                {% if p.tags.exists %}
+                <i class="fas fa-tags"></i>
+                {% for tag in p.tags.iterator %}
+                    <a href="{{ tag.get_absolute_url }}"><span class="badge badge-pill badge-light">{{ tag }}</span></a>
+                {% endfor %}
+
+                <br/>
+                <br/>
+                {% endif %}
+
+                <a href="{{ p.get_absolute_url }}" class="btn">Read More &rarr;</a>
+            </div>
+            <div class="card-footer text-muted">
+                Posted on {{ p.created_at }} by
+                <a href="#">{{p.author | upper}}</a>
+            </div>
+        </div>
+    {% endfor %}
+    {% else %}
+        <h3>아직 게시물이 없습니다.</h3>
+    {% endif %}
+</body>
+    {% if is_paginated %}
+    <!-- Pagination -->
+    <ul class="pagination justify-content-center mb-4">
+        {% if page_obj.has_next %}
+                <li class="page-item">
+                    <a class="page-link" href="?page={{ page_obj.next_page_number }}">&larr; 이전</a>
+                </li>
+            {% else %}
+                <li class="page-item disabled">
+                    <a class="page-link" href="#">&larr; 이전</a>
+                </li>
+            {% endif %}
+
+            {% if page_obj.has_previous %}
+                <li class="pageitem">
+                    <a class="page-link" href="?page={{ page_obj.previous_page_number }}">다음 &rarr;</a>
+                </li>
+            {% else %}
+                <li class="page-item disabled">
+                    <a class="page-link" href="#">다음 &rarr;</a>
+                </li>
+            {% endif %}
+    </ul>
+    {% endif %}
+
+{% endblock %}
+<br><br><br><br>

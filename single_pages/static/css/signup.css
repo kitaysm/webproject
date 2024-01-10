@@ -1,0 +1,46 @@
+/* signup.css */
+
+/* Global Styles */
+body {
+    background-color: #000000;
+    color: #ff0000;
+    font-family: 'Arial', sans-serif;
+}
+
+/* Signup Form Styles */
+.container-fluid {
+    margin-top: 20px;
+}
+
+.col-md-4 {
+    text-align: center;
+}
+
+.img-fluid {
+    max-width: 100%;
+    height: auto;
+}
+
+h2 {
+    color: #ff0000;
+}
+
+form {
+    margin-top: 20px;
+}
+
+form button {
+    background-color: #ff0000;
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+form button:hover {
+    background-color: #990000;
+}
+
+.text-muted {
+    margin-top: 50px;
+}

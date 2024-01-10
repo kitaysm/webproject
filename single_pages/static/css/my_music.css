@@ -1,0 +1,176 @@
+body {
+    background-color: #111;
+    color: white;
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+}
+
+#main-area {
+    background-color: #222;
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 20px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Arial', sans-serif;
+    font-weight: bold;
+}
+
+h1 {
+    color: #e50914;
+}
+
+#musicForm {
+    width: 50%;
+    margin: auto;
+    padding: 20px;
+    background-color: #333;
+    border-radius: 10px;
+}
+
+form label {
+    color: #e50914;
+}
+
+input,
+select {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+    background-color: #444;
+    color: white;
+    border: 1px solid #555;
+    border-radius: 5px;
+}
+
+button {
+    padding: 10px;
+    background-color: #e50914;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    outline: none;
+}
+
+button:focus {
+    box-shadow: 0 0 5px rgba(229, 9, 20, 0.8);
+}
+
+button:hover {
+    background-color: #ff414d;
+}
+
+#musicList {
+    margin-top: 20px;
+}
+
+.music-card {
+    border: 1px solid #555;
+    padding: 10px;
+    margin-bottom: 20px;
+    background-color: #222;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    margin-right: 20px;
+}
+
+.music-card h2,
+.music-card p {
+    color: white;
+    margin: 5px 0;
+}
+
+.music-card iframe {
+    width: 100%;
+    height: 500px; 
+    border: none;
+    object-fit: cover;  /* 추가된 부분 */
+}
+
+.delete-button {
+    color: #e50914;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+.delete-button:hover {
+    color: #ff414d;
+}
+
+#preButton,
+#nextButton {
+    padding: 10px;
+    background-color: #e50914;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+#preButton:hover,
+#nextButton:hover {
+    background-color: #ff414d;
+}
+
+footer {
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #222;
+    border-radius: 10px;
+    text-align: center;
+}
+
+#musicTitleList {
+    background-color: #343a40; /* 변경된 부분: 흰색에서 어두운 회색으로 */
+    padding: 15px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* 변경된 부분: 박스 그림자 농도 조정 */
+    position: sticky;
+    top: 20px;
+}
+
+#musicTitleList ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+#musicTitleList li {
+    margin-bottom: 8px;
+    cursor: pointer;
+    padding: 8px;
+    background-color: #495057; /* 변경된 부분: 배경색 어둡게 */
+    border-radius: 3px;
+}
+
+#musicTitleList li:hover {
+    background-color: #6c757d; /* 변경된 부분: 호버 시 배경색 변경 */
+}
+
+
+
+
+
+.music-title {
+    cursor: pointer;
+    padding: 5px;
+    margin: 5px;
+    display: inline-block;
+ /* 빨간색 배경 */
+    color: white; /* 흰색 글자 */
+    border: 1px solid #ddd;
+    transition: box-shadow 0.3s, transform 0.3s;
+    ;
+
+}
+
+.music-title:hover {
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* 그림자 효과 */
+    transform: translateY(-2px); /* 약간 위로 올라가는 효과 */
+}
+

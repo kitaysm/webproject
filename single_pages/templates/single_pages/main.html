@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <link rel="stylesheet" href="{% static 'css/main.css' %}" media="screen">
+    <title>MUSICPLUS main</title>
+</head>
+<style>
+    h1{
+        color:white;
+    }
+    .full-width-image {
+        width: 100%;
+        height: 90vh;
+        background: url('{% static "images/가수.png" %}') center center no-repeat;
+        background-size: cover;
+        {% comment %} opacity: 0.5; {% endcomment %}
+        overflow: hidden;
+    }
+    
+    .text-container {
+        background-color: rgba(0, 0, 0, 0); /* 투명한 배경 */
+    }
+
+    .text-light {
+        color: white; /* 텍스트 색상을 밝게 */
+    }
+
+
+    /* 전체 페이지 스타일 */
+    body {
+        margin: 0;
+        padding: 0;
+        {% comment %} background-color: #f0f0f0; {% endcomment %}
+    }
+
+    /* 사진 갤러리 */
+    .photo-gallery {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr); /* 2열 */
+        grid-template-rows: repeat(2, 1fr); /* 4행 */
+        gap: 10px; /* 카드 사이 간격 */
+        width: 80%; /* 갤러리 너비 */
+        max-width: 1500px; /* 최대 너비 */
+        margin: auto; /* 중앙 정렬 */
+    }
+
+    .photo-card {
+        {% comment %} background-color: b; {% endcomment %}
+        border: 0.5spx solid #ddd;
+        padding: 10px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .photo-card img {
+        width: 100%;
+        height: auto;
+    }
+    /* 추가적인 커스텀 스타일 (필요한 경우) */
+</style>
+
+    
+</style>
+
+<body>
+    {% comment %} <header>
+        <h1>MFlix</h1> {% endcomment %}
+        {% include 'single_pages/navbar.html' %}
+    {% comment %} </header><br> {% endcomment %}
+
+
+        {% comment %} <h1>main.html 입니다. css는 각주 처리한 상태입니다(섞여서 꼬이더라구요)..</h1> {% endcomment %}
+
+        <section>
+            <div class="container-fluid mt-0 mb-0 p-0 full-width-image" style="display:flex; align-items: center;">
+                <div class="container text-container">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-8 text-light">
+                            <h3 class="mt-5">2024-01-10</h3>
+                            <h2 class="mt-5">MUSICPLUS에 오신 것을 환영합니다!</h2>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="photo-gallery">
+                <div class="photo-card"><img src="{% static 'images/뉴진스.png' %}" alt="드럼"></div>
+                <div class="photo-card"><img src="{% static 'images/르세라핌.jpg' %}" alt="드럼"></div>
+                <div class="photo-card"><img src="{% static 'images/방탄.jpg' %}" alt="드럼"></div>
+                <div class="photo-card"><img src="{% static 'images/아이들.jpg' %}" alt="드럼"></div>
+                <div class="photo-card"><img src="{% static 'images/아이브.png' %}" alt="드럼"></div>
+                <div class="photo-card"><img src="{% static 'images/아이유.jpg' %}" alt="드럼"></div>
+                <div class="photo-card"><img src="{% static 'images/에스파.jpg' %}" alt="드럼"></div>
+                <div class="photo-card"><img src="{% static 'images/임영웅.jpg' %}" alt="드럼"></div>
+                {% comment %} <div class="photo-card"><img src="photo2.jpg" alt="사진 2"></div> {% endcomment %}
+                <!-- 나머지 사진들도 같은 방식으로 추가 -->
+                {% comment %} <div class="photo-card"><img src="photo8.jpg" alt="사진 8"></div> {% endcomment %}
+            </div>
+
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-12 mt-7">
+                        <h2 class="text-light">NEWS - Recent posts</h2>
+            
+                        <!-- Flexbox 컨테이너를 가로 방향으로 변경 -->
+                        <div class="d-flex flex-row align-items-stretch">
+                            {% for post in recent_posts %}
+                            <div class="card mt-1" style="flex: 0 0 auto; width: 30%; margin-right: 10px;">
+                                <!-- 게시물 이미지 추가 -->
+                                {% if post.head_image %}
+                                    <img class="card-img-top" src="{{ post.head_image.url }}" alt="{{ post.title }} image">
+                                {% else %}
+                                    <!-- 기본 이미지 또는 대체 이미지 사용 -->
+                                    <img class="card-img-top" src="기본_이미지_경로" alt="Default image">
+                                {% endif %}
+            
+                                <div class="card-body">
+                                    <h6><a href="{{ post.get_absolute_url }}" class="text-decoration-none text-dark">{{ post.title }}</a></h6>
+                                    <span class="badge badge-pill badge-light float-right">
+                                        {{ post.author.username }} &nbsp; &nbsp; {{ post.created_at }}</span>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            
+            
+        </section>    
+        {% include 'single_pages/캐러셀.html'%}
+        <link rel="stylesheet" href="{% static 'css/캐러셀.css'%}">
+        <script src="{% static 'js/캐러셀.js'%}"></script>
+
+        
+
+
+    {% include 'single_pages/footer.html' %}
+    <script src="{% static 'js/main.js'%}"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js"></script>
+</body>
+
+</html>

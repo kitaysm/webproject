@@ -1,0 +1,97 @@
+/* home.css */
+
+/* Global Styles */
+body {
+    background-color: #000000;
+    color: #ff0000;
+    font-family: 'Arial', sans-serif;
+}
+
+/* Navbar Styles */
+/* 넷플릭스 로그인 화면에는 Navbar가 없으므로 여기에서는 생략합니다. */
+
+h1 {
+    color: #ff0000;
+    font-family: 'Arial', sans-serif;
+}
+/* Carousel Styles */
+.carouselPrograms {
+    margin-top: 20px;
+}
+
+.carousel-inner {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.carousel-item {
+    padding: 0 10px;
+}
+
+.panel-thumbnail {
+    position: relative;
+    overflow: hidden;
+    padding-bottom: 75%;
+}
+
+.panel-thumbnail img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.carousel-control-prev, .carousel-control-next {
+    width: 5%;
+    font-size: 20px;
+    color: #ff0000;
+    background-color: transparent;
+}
+
+.carousel-control-prev-icon, .carousel-control-next-icon {
+    background-color: #000000;
+}
+
+.carousel-control-prev:hover, .carousel-control-next:hover {
+    color: #ff0000;
+}
+
+/* Footer Styles */
+.footer {
+    background-color: #000000;
+    color: #ff0000;
+    text-align: center;
+    padding: 20px 0;
+}
+
+/* Main Script Styles */
+/* Add your specific styles for main.js here */
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .carousel-inner {
+        flex-direction: column;
+    }
+}
+
+body {
+    display: none; /* Initially hide the body */
+}
+
+.logo-container {
+    text-align: center;
+    margin-top: 200px;
+    opacity: 0; /* Initially hide the logo */
+    animation: fadeInLogo 7s forwards; /* Animation to fade in the logo */
+}
+
+@keyframes fadeInLogo {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}

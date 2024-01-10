@@ -1,0 +1,113 @@
+body {
+    background-color: #141414; /* 넷플릭스 배경색 */
+    color : white;
+
+}
+
+.carousel-inner img {
+    width: 100%;
+    height: auto;
+}
+
+.carousel-control-prev-icon, .carousel-control-next-icon {
+    background-color: #d22f27; /* 좌우 화살표 배경색 */
+    color: #fff; /* 좌우 화살표 색상 */
+}
+
+.carousel-control-prev, .carousel-control-next {
+    width: 5%;
+}
+
+.carousel-indicators li {
+    background-color: #d22f27; /* 인디케이터 색상 */
+}
+
+.footer {
+    background-color: #1c1c1c; /* 푸터 배경색 */
+    color: #fff; /* 푸터 폰트 색상 */
+    padding: 20px 0;
+}
+
+/*네비브바*/
+.custom-navbar {
+    background-color: #000; 
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.navbar-brand {
+    color: #fff;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.navbar-links {
+    display: flex;
+    align-items: center;
+}
+
+.nav-link {
+    color: #f8f9fa;
+    text-decoration: none;
+    padding: 0 1rem;
+}
+
+.nav-link:hover {
+    color: red ;
+}
+
+
+.nav-dropdown {
+    position: relative;
+}
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    background-color: #444;
+    padding: 1rem;
+    border-radius: 5px;
+}
+
+.dropdown-menu .dropdown-item {
+    color: #fff;
+    padding: 0.5rem 1rem;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-menu .dropdown-item:hover {
+    background-color: #555;
+}
+
+.nav-dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+/* 검색 폼 스타일 */
+.form-inline {
+    display: flex;
+    align-items: center;
+}
+
+.form-control {
+    padding: 0.5rem;
+    margin-right: 0.5rem;
+}
+
+.btn {
+    padding: 0.5rem 1rem;
+    background-color: #2e1a1a;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background-color: #f10909;
+}
+
+    
+    

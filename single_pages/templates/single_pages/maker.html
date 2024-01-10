@@ -1,0 +1,228 @@
+{% comment %} "\single_pages\templates\single_pages\maker.html" {% endcomment %}
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/maker.css' %}">
+    <link rel="stylesheet" href="{% static 'css/main.css' %}" media="screen">
+    <title>{% block head_title %}Blog{% endblock %} </title>
+
+    <style>
+        .full-background {
+            background: url('{% static "images/밴드1.jpg" %}') no-repeat center center fixed;
+            background-size: cover;
+            width: 100%;
+            height: 100%;
+        }
+
+    </style>
+</head>
+
+<body class="full-background">
+    {% comment %} <header>
+        <h1>MFlix</h1>
+    </header><br> {% endcomment %}
+    {% include 'single_pages/navbar.html' %}
+    <div class="container my-3">
+        <div class="row">
+            <div class="col-md-8 col-lg-9" id="main-area">
+    {% block main_area %}
+    {% endblock %}
+            </div>
+            <div class="col-md-4 col-lg-3">
+
+            </div>
+        </div>
+    </div>
+
+    <link rel="stylesheet" href="{% static 'css/maker_소개.css' %}">
+    <!-- MUSICPLUS 소개 섹션 -->
+    <div class="musicplus-intro-section">
+        {% comment %} <h1 class="musicplus-title">한정현 김학준 윤성민 팀원 간단한 소개 내용</h1> {% endcomment %}
+        <img src="{% static 'images/musicplus-logo.png' %}" class="musicplus-logo">
+        <div class="musicplus-description">
+            <p>환영합니다! 'MUSICPLUS'는 음악 애호가들을 위한 혁신적인 웹 플랫폼입니다. 이곳에서는 다양한 장르의 음악을 탐색하고, 새로운 아티스트를 발견하며, 음악에 대한 깊이 있는 토론과 정보 공유를 할 수 있습니다.</p>
+            <p><strong>주요 특징:</strong></p>
+            <ul>
+                <li>다양한 장르 탐색: 클래식부터 K-pop, 재즈, 록, 힙합에 이르기까지 다양한 음악 장르를 한눈에 볼 수 있습니다.</li>
+                <li>플레이리스트 공유: 사용자들은 자신만의 플레이리스트를 생성하고 공유할 수 있습니다. 다른 사용자의 플레이리스트를 탐색하며 새로운 음악을 발견해보세요.</li>
+                <li>라이브 채팅과 토론: 음악에 대한 생각을 공유하고, 아티스트와 앨범에 대한 토론에 참여할 수 있는 라이브 채팅 기능을 제공합니다.</li>
+                <li>아티스트 발견: 신진 아티스트와 인디 밴드를 소개하고, 그들의 음악을 직접 듣고 지원할 수 있는 공간입니다.</li>
+            </ul>
+            <p>'MUSICPLUS'는 단순한 음악 스트리밍 서비스를 넘어, 음악을 사랑하는 사람들의 커뮤니티를 만들어가고 있습니다. 우리는 음악을 통해 세상을 연결하고, 모든 사람들이 음악의 즐거움을 더 깊이 경험할 수 있도록 노력하고 있습니다.</p>
+            <p>지금 바로 'MUSICPLUS'에 가입하고, 음악의 무한한 세계를 탐험해보세요!</p>
+        </div>
+    </div>
+
+
+    <!------ Include the above in your HEAD tag ---------->
+    
+    <!-- Team -->
+    <section id="team" class="pb-5">
+        <div class="container  bg-dark">
+            <h5 class="section-title h1">OUR TEAM</h5>
+            <div class="row">
+                <!-- Team member -->
+                <div class="col-xs-12 col-sm-6 col-md-4">
+                    <div class="image-flip" >
+                        <div class="mainflip flip-0">
+                            <div class="frontside">
+                                <div class="card">
+                                    <div class="card-body text-center bg-dark">
+                                        <p><img class=" img-fluid" src="data:image/jpeg;base64,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" alt="card image"></p>
+                                        <h4 class="card-title">김학준</h4>
+                                        <p class="card-text">"게임을 좋아하는 신재호입니다. 주로 RPG와 모험 장르의 게임을 즐겨합니다."</p>
+                                        <a href="https://www.fiverr.com/share/qb8D02" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="backside">
+                                <div class="card">
+                                    <div class="card-body text-center mt-4 bg-dark">
+                                        <h4 class="card-title">김학준</h4>
+                                        <p class="card-text " >K-디지털 트레이닝 정보보안과 IT기술을 선도하는 코리아IT아카데미 AI기반 챗봇 및 OCR 개발 전문가 과정 (6회차). 프로젝트1 Django프레임워크를 활용한 웹 애플리케이션 구축.</p>
+                                        <ul class="list-inline">
+                                            <li class="list-inline-item">
+                                                <a class="social-icon text-xs-center" target="_blank" href="https://www.fiverr.com/share/qb8D02">
+                                                    <i class="fa fa-facebook"></i>
+                                                </a>
+                                            </li>
+                                            <li class="list-inline-item">
+                                                <a class="social-icon text-xs-center" target="_blank" href="https://www.fiverr.com/share/qb8D02">
+                                                    <i class="fa fa-twitter"></i>
+                                                </a>
+                                            </li>
+                                            <li class="list-inline-item">
+                                                <a class="social-icon text-xs-center" target="_blank" href="https://www.fiverr.com/share/qb8D02">
+                                                    <i class="fa fa-skype"></i>
+                                                </a>
+                                            </li>
+                                            <li class="list-inline-item">
+                                                <a class="social-icon text-xs-center" target="_blank" href="https://www.fiverr.com/share/qb8D02">
+                                                    <i class="fa fa-google"></i>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-6 col-md-4">
+                    <div class="image-flip" ontouchstart="this.classList.toggle('hover');">
+                        <div class="mainflip">
+                            <div class="frontside">
+                                <div class="card">
+                                    <div class="card-body text-center bg-dark">
+                                        <p><img class=" img-fluid" src="https://mblogthumb-phinf.pstatic.net/MjAyMTA4MDFfMjIx/MDAxNjI3ODE1MTkyMjI2.MttKEaAXsLAtJbii9P-5OGX06s6-uVzMSVa6Db7D96gg.qITLHjb_-CZGx0pt3JXbKybmOaY54vrI1tqO7qP7mscg.PNG.brotherm1n/IMG_3219.PNG?type=w800" alt="card image"></p>
+                                        <h4 class="card-title">한정현</h4>
+                                        <p class="card-text">"음악을 사랑하는 한정현입니다! 클래식부터 K-pop까지 다양한 장르를 듣습니다."</p>
+                                        <a href="https://www.fiverr.com/share/qb8D02" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="backside">
+                                <div class="card">
+                                    <div class="card-body text-center mt-4 bg-dark">
+                                        <h4 class="card-title">한정현</h4>
+                                        <p class="card-text">K-디지털 트레이닝 정보보안과 IT기술을 선도하는 코리아IT아카데미 AI기반 챗봇 및 OCR 개발 전문가 과정 (6회차). 프로젝트1 Django프레임워크를 활용한 웹 애플리케이션 구축.</p>
+                                        <ul class="list-inline">
+                                            <li class="list-inline-item">
+                                                <a class="social-icon text-xs-center" target="_blank" href="https://www.fiverr.com/share/qb8D02">
+                                                    <i class="fa fa-facebook"></i>
+                                                </a>
+                                            </li>
+                                            <li class="list-inline-item">
+                                                <a class="social-icon text-xs-center" target="_blank" href="https://www.fiverr.com/share/qb8D02">
+                                                    <i class="fa fa-twitter"></i>
+                                                </a>
+                                            </li>
+                                            <li class="list-inline-item">
+                                                <a class="social-icon text-xs-center" target="_blank" href="https://www.fiverr.com/share/qb8D02">
+                                                    <i class="fa fa-skype"></i>
+                                                </a>
+                                            </li>
+                                            <li class="list-inline-item">
+                                                <a class="social-icon text-xs-center" target="_blank" href="https://www.fiverr.com/share/qb8D02">
+                                                    <i class="fa fa-google"></i>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- ./Team member -->
+                <!-- Team member -->
+                <div class="col-xs-12 col-sm-6 col-md-4">
+                    <div class="image-flip" ontouchstart="this.classList.toggle('hover');">
+                        <div class="mainflip">
+                            <div class="frontside">
+                                <div class="card">
+                                    <div class="card-body text-center bg-dark">
+                                        <p><img class=" img-fluid" src="https://velog.velcdn.com/images/go286/profile/029d93b6-668a-4190-9197-33a598e0b89c/me.jpg" alt="card image"></p>
+                                        <h4 class="card-title">윤성민</h4>
+                                        <p class="card-text">"사진 찍는 것이 취미인 윤성민입니다. 자연 풍경과 일상을 담는 것을 좋아합니다."</p>
+                                        <a href="https://www.fiverr.com/share/qb8D02" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="backside">
+                                <div class="card">
+                                    <div class="card-body text-center mt-4 bg-dark">
+                                        <h4 class="card-title">윤성민</h4>
+                                        <p class="card-text">K-디지털 트레이닝 정보보안과 IT기술을 선도하는 코리아IT아카데미 AI기반 챗봇 및 OCR 개발 전문가 과정 (6회차). 프로젝트1 Django프레임워크를 활용한 웹 애플리케이션 구축.</p>
+                                        <ul class="list-inline">
+                                            <li class="list-inline-item">
+                                                <a class="social-icon text-xs-center" target="_blank" href="https://www.fiverr.com/share/qb8D02">
+                                                    <i class="fa fa-facebook"></i>
+                                                </a>
+                                            </li>
+                                            <li class="list-inline-item">
+                                                <a class="social-icon text-xs-center" target="_blank" href="https://www.fiverr.com/share/qb8D02">
+                                                    <i class="fa fa-twitter"></i>
+                                                </a>
+                                            </li>
+                                            <li class="list-inline-item">
+                                                <a class="social-icon text-xs-center" target="_blank" href="https://www.fiverr.com/share/qb8D02">
+                                                    <i class="fa fa-skype"></i>
+                                                </a>
+                                            </li>
+                                            <li class="list-inline-item">
+                                                <a class="social-icon text-xs-center" target="_blank" href="https://www.fiverr.com/share/qb8D02">
+                                                    <i class="fa fa-google"></i>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- ./Team member -->
+                <!-- Team member -->
+                
+                <!-- ./Team member -->
+    
+            </div>
+        </div>
+    </section>
+    <!-- Team -->
+
+
+
+    {% include 'single_pages/footer.html' %}
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"></script>
+</body>
+
+</html>

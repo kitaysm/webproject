@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <link rel="stylesheet" href="{% static 'css/home.css' %}" media="screen">
+    <link rel="stylesheet" href="{% static 'css/main.css' %}" media="screen">
+    <title>MUSICPLUS home</title>
+</head>
+
+<body>
+    {% include 'blog/navbar.html' %}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-4 offset-md-4 text-center mt-5">
+                <img src="{% static 'images/musicplus-logo.png' %}" alt="musicplus Logo" class="img-fluid mb-4">
+                {% block content %}
+                {% if user.is_authenticated %}
+                    <p>안녕하세요, {{ user.username }}님!</p>
+                    <a href="{% url 'account_logout' %}">로그아웃</a>
+                {% else %}
+                <form method="post" action="{% url 'account_login' %}">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-danger btn-block">로그인</button>
+                </form>
+                <p class="mt-3">
+                    <a href="{% url 'account_signup' %}" class="text-danger">회원가입</a>
+                </p>
+                {% endif %}
+                {% endblock %}
+                </form>
+                <p class="text-muted mt-5">
+                    당신의 음악을 Music+와 함께하세요!
+                </p>
+            </div>
+        </div>
+    </div>
+    <script src="{% static 'js/home.js'%}"></script>
+</body>
+
+</html>

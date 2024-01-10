@@ -1,0 +1,30 @@
+
+    
+    <nav class="custom-navbar">
+        <a href="/" class="nav-link">MUSICPLUS</a>
+    
+        <div class="navbar-links">
+            <a href="/main/" class="nav-link active">main</a>
+            <a href="/my_music/" class="nav-link">my_music</a>
+            <a href="/realtime_chart/" class="nav-link">realtime_chart</a>
+            <a href="/blog1/" class="nav-link">music_recommendations</a>
+            <a href="/maker/" class="nav-link">maker</a>
+            <a href="/blog/" class="nav-link">News</a>
+            
+    
+            <div class="nav-dropdown">
+                <a href="#" class="nav-link dropdown-toggle" id="navbarDropdown">이상형월드컵</a>
+                <div class="dropdown-menu">
+                    <a href="https://www.piku.co.kr/w/6E840f" class="dropdown-item" target=_blank>2020년대히트곡</a>
+                    <a href="https://www.piku.co.kr/w/5237I6" class="dropdown-item" target=_blank>2000년~2009년히트곡</a>
+                    <a href="https://www.piku.co.kr/w/4Khv3e" class="dropdown-item" target=_blank>팝송레전드</a>
+                </div>
+            </div>
+            {% if user.is_authenticated %}
+        <span class="navbar-text mr-2">{{ user.username }}</span>
+        <a href="{% url 'account_logout' %}" class="btn btn-danger">로그아웃</a>
+    {% else %}
+        <a href="{% url 'account_login' %}" class="btn btn-danger">로그인</a>
+    {% endif %}
+        </div>
+    </nav>

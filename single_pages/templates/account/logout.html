@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+{% load static %}
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/logout.css' %}" media="screen">
+
+    <title>로그인페이지</title>
+</head>
+
+{% block content %}
+    <h2>로그아웃 페이지</h2>
+    <p>로그아웃 되었습니다. 안녕히 가세요!</p>
+    <form method="post" action="{% url 'account_logout' %}">
+        {% csrf_token %}
+        <input type="submit" value="Sign Out">
+{% endblock %}

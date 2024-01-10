@@ -1,0 +1,49 @@
+/* login.css */
+
+/* Global Styles */
+body {
+    background-color: #000000;
+    color: #ff0000;
+    font-family: 'Arial', sans-serif;
+}
+
+h2 {
+    color: #ff0000;
+    font-family: 'Arial', sans-serif;
+}
+
+/* Form Styles */
+form {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #1a1a1a;
+    border: 1px solid #ff0000;
+    border-radius: 5px;
+    margin-top: 50px;
+}
+
+form input {
+    width: 95%;
+    padding: 10px;
+    margin-bottom: 10px;
+    background-color: #333;
+    color: #fff;
+    border: 1px solid #ff0000;
+    border-radius: 3px;
+}
+
+form button {
+    width: 100%;
+    padding: 10px;
+    background-color: #ff0000;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    /* Add specific styles for smaller screens if needed */
+}

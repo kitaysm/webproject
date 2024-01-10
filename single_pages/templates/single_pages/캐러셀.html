@@ -1,0 +1,57 @@
+{% comment %} "\blog\templates\blog\캐러셀.html" {% endcomment %}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<link rel="stylesheet" href="single_pages/캐러셀.css">
+<main>
+    
+    <div id="carousel">
+      <div class="hideLeft">
+        <img src="{{chart_data.0.picture}}">
+        <h3>{{chart_data.0.title}} - {{chart_data.0.artist}}</h3>
+      </div>
+
+      <div class="prevLeftSecond">
+        <img src="{{chart_data.1.picture}}">
+        <h3>{{chart_data.1.title}} - {{chart_data.1.artist}}</h3>
+      </div>
+
+      <div class="prev">
+        <img src="{{chart_data.2.picture}}">
+        <h3>{{chart_data.2.title}} - {{chart_data.2.artist}}</h3>
+      </div>
+
+      <div class="selected">
+        <img src="{{chart_data.3.picture}}">
+        <h3>{{chart_data.3.title}} - {{chart_data.3.artist}}</h3>
+      </div>
+
+      <div class="next">
+        <img src="{{chart_data.4.picture}}">
+        <h3>{{chart_data.4.title}} - {{chart_data.4.artist}}</h3>
+      </div>
+
+      <div class="nextRightSecond">
+        <img src="{{chart_data.5.picture}}">
+        <h3>{{chart_data.5.title}} - {{chart_data.5.artist}}</h3>
+      </div>
+
+      <div class="hideRight">
+        <img src="{{chart_data.6.picture}}"> 
+        <h3>{{chart_data.6.title}} - {{chart_data.6.artist}}</h3>
+      </div>
+
+    </div>
+
+    <div class="buttons">
+      <button id="prev">Prev</button>
+      <button id="next">Next</button>
+    </div>
+
+  </main>
+  <script src="single_pages/캐러셀.js"></script>
+
+
+
+
+
+

@@ -1,0 +1,23 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ post.title}} - Blog</title>
+</head>
+
+<body>
+    <nav>
+        <a href="/blog/">다른 가수 살펴보기</a>
+    </nav>
+    <h1>{{ post.title }}</h1>
+    <h4>{{ post.created_at }}</h4>
+    <p>{{ post.content }}</p>
+    <hr />
+    <!-- 이곳에 이미지 넣기 -->
+    <img src="{% static 'images/2022_singer.jpg' %}" alt="2022년을 빛낸 가수">
+    <h3>이름 : 방탄소년단</h3>
+    <h3>대표곡 : Butter</h3>
+</body>
+
+</html>

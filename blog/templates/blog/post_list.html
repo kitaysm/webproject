@@ -1,0 +1,117 @@
+{% extends "blog/base.html" %}
+{% block main_area %}
+{% load static %}
+{% if user.is_authenticated %}
+        {% if user.is_superuser %}
+        {% comment %} 로그인한 유저가 슈퍼유저거나 스태프인경우에만 new_post가 뜸. 일반유저도 쓰게할수있게하려면 조건문 그냥 지우면됨 {% endcomment %}
+            <a class="btn float-right" href="/blog/create_post/" role="button">
+                <i class="fas fa-pen"></i>&nbsp;&nbsp;New Post</a>
+        {% endif %}
+    {% endif %}
+
+
+
+    <style>
+        h1{
+            color:white;
+        }
+        .card-body{
+            background:black;
+            color:white;
+        }
+        .info {
+            font-size: 18px;
+            margin: 10px;
+        }
+        .btn {
+            background-color: red;
+            color: white;
+        }
+        .full-background {
+            background: url('{% static "images/기타3.jpg" %}') no-repeat center center fixed;
+            background-size: cover;
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+<body class="full-background">
+        <h1>NEWS <br>
+        <div class="info">음악계의 가장 신선하고 중요한 뉴스를 제공합니다. 이곳은 사이트 관리자가 직접 엄선하여 포스팅하는 공간으로, 
+            음악 산업의 최신 동향, 중요한 이벤트, 그리고 올해의 가수에 대한 깊이 있는 정보를 담고 있습니다.</div>
+        {% if search_info %}<small class="text-muted">{{ search_info }}</small>{% endif %}
+        {% if category %}<span class="badge badge-secondary">{{ category }}</span>{% endif %}
+        {% if tag %}<span class="badge badge-light"><i class="fas fa-tags"></i>{{ tag }} ({{ tag.post_set.count }})</span>{% endif %}
+    </h1>
+    {% if post_list.exists %}
+
+    {% for p in post_list %}
+        <!-- Blog Post -->
+        <div class="card mb-4" id="post-{{p.pk}}">
+            {% if p.head_image %}
+                <img class="card-img-top" src="{{ p.head_image.url }}" alt="{{ p }} head image">
+            {% else %}
+                <img class="card-img-top" src="https://picsum.photos/seed/{{ p.id }}/800/200" alt="random_image">
+            {% endif %}
+            <div class="card-body">
+                {% if p.category %}
+                    <span class="badge badge-secondary float-right">{{ p.category }}</span>
+                {% else %}
+                    <span class="badge badge-secondary float-right">미분류</span>
+                {% endif %}
+
+                <h2 class="card-title">{{ p.title }}</h2>
+                {% if p.hook_text %}
+                    <h5 class="text-muted">{{ p.hook_text }}</h5>
+                {% endif %}
+                <p class="card-text">{{ p.get_content_markdown | truncatewords:45 | safe }}</p>
+                {% comment %} 45단어까지만 보여줌 {% endcomment %}
+
+                {% comment %} 해시태그만들기 {% endcomment %}
+                {% if p.tags.exists %}
+                <i class="fas fa-tags"></i>
+                {% for tag in p.tags.iterator %}
+                    <a href="{{ tag.get_absolute_url }}"><span class="badge badge-pill badge-light">{{ tag }}</span></a>
+                {% endfor %}
+
+                <br/>
+                <br/>
+                {% endif %}
+
+                <a href="{{ p.get_absolute_url }}" class="btn">Read More &rarr;</a>
+            </div>
+            <div class="card-footer text-muted">
+                Posted on {{ p.created_at }} by
+                <a href="#">{{p.author | upper}}</a>
+            </div>
+        </div>
+    {% endfor %}
+    {% else %}
+        <h3>아직 게시물이 없습니다.</h3>
+    {% endif %}
+
+    {% if is_paginated %}
+    <!-- Pagination -->
+    <ul class="pagination justify-content-center mb-4">
+        {% if page_obj.has_next %}
+                <li class="page-item">
+                    <a class="page-link" href="?page={{ page_obj.next_page_number }}">&larr; 이전</a>
+                </li>
+            {% else %}
+                <li class="page-item disabled">
+                    <a class="page-link" href="#">&larr; 이전</a>
+                </li>
+            {% endif %}
+
+            {% if page_obj.has_previous %}
+                <li class="pageitem">
+                    <a class="page-link" href="?page={{ page_obj.previous_page_number }}">다음 &rarr;</a>
+                </li>
+            {% else %}
+                <li class="page-item disabled">
+                    <a class="page-link" href="#">다음 &rarr;</a>
+                </li>
+            {% endif %}
+    </ul>
+    {% endif %}
+</body>
+{% endblock %}
